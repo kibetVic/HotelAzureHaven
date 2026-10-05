@@ -1,0 +1,17 @@
+# Protect directory browsing and sensitive files
+Options -Indexes
+
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<FilesMatch "^(database\.php|schema\.sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Friendly URLs & basic rewrite handling
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
